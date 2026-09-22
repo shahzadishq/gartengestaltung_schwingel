@@ -1,0 +1,14 @@
+{
+  "name": "schwingel-gartengestaltung",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Homepage-Konzept für Gartengestaltung Schwingel – statische Seite ohne Build-Schritt.",
+  "scripts": {
+    "dev": "serve . -l 5173",
+    "images": "node scripts/optimize-images.mjs"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4",
+    "sharp": "^0.34.4"
+  }
+}
