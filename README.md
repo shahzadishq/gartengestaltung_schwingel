@@ -63,8 +63,9 @@ Keine Referenzen, Bewertungen, Auszeichnungen oder Zahlen wurden erfunden.
 
 ## Bilder und Instagram
 
-Instagram liefert Bilder nur nach Login aus. Deshalb stammen die Fotos aus dem Karriere-Funnel
-(Hero, Teamfotos) und von der bestehenden Website (Team 2022, Projektfotos). Es gibt keine Stockfotos.
+Die Fotos stammen aus dem Karriere-Funnel (Hero, Teamfotos), von der bestehenden Website (Team 2022,
+Projektfotos, Porträts) und aus Instagram (vom Kunden bereitgestellt). Es gibt keine Stockfotos.
+Instagram-Posts mit eingebranntem Text (Stellenanzeigen) sind bewusst nicht verwendet.
 
 **Bild austauschen**, z. B. durch ein Instagram-Foto:
 
@@ -78,7 +79,9 @@ Alle Bildstellen sind im HTML mit `<!-- BILDPLATZ: … -->` markiert.
 |---|---|---|
 | `hero-garten.jpg` | Hero | nur 750 px breit – **höher aufgelöstes Original gewünscht** (≥ 2000 px) |
 | `team-kollektiv.jpg` | Über uns | 2560 px, gut |
-| `team-baustelle.jpg`, `team-lachen.jpg` | Über uns, CTA | 1080 px, gut |
+| `team-lachen.jpg` | CTA | 1080 px, gut |
+| `insta-garten-schubkarre.jpg`, `insta-team-shirt.jpg` | Über uns (Zweitbild), Warum Schwingel | aus Instagram, nur 512 px – reicht für die kleinen Formate |
+| `person-*.jpg` | Ansprechpartner im CTA | Porträts der Altseite, 200 px |
 | `leistung-*.jpg` | Leistungen | 800 px von der Altseite – bessere Instagram-Fotos willkommen |
 | – | Baumfällarbeiten, Grabgestaltung | **Platzhalter**: Es gibt noch kein geeignetes Foto |
 

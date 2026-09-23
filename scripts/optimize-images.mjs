@@ -11,7 +11,11 @@ const OUT = 'assets/img';
 const IMAGES = {
   'hero-garten': [480, 750, 1200],
   'team-kollektiv': [640, 1024, 1600],
-  'team-baustelle': [480, 720, 1080],
+  'insta-garten-schubkarre': [512],
+  'insta-team-shirt': [512],
+  'person-lohmann': [200],
+  'person-c-schwingel': [200],
+  'person-bonkamp': [200],
   'team-lachen': [480, 720, 1080],
   'leistung-planung': [480, 800],
   'leistung-pflasterungen': [480, 800],
