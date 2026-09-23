@@ -112,6 +112,7 @@
 
           <h2 class="k-hero__ask" id="stellen">Welche Stelle interessiert dich?</h2>
           <div class="k-jobs" data-jobs></div>
+          <a class="k-details-link" href="#stellen-details">Aufgaben &amp; Anforderungen ansehen <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
         </div>
       </section>
 
@@ -145,16 +146,112 @@
       </section>
 
       <!-- WIR VERGRÖSSERN UNSER TEAM -->
-      <section class="k-team section" aria-labelledby="k-team-title">
+      <section class="k-team section" id="stellen-details" aria-labelledby="k-team-title">
         <div class="container">
           <header class="section-head">
             <div>
-              <p class="kicker" data-reveal>Offene Stellen</p>
+              <p class="kicker" data-reveal>Die Stellen im Detail</p>
               <h2 class="h2" id="k-team-title" data-reveal>Wir vergrößern unser Team<span class="dot">.</span></h2>
             </div>
             <p class="section-head__intro" data-reveal>Verstärke uns — wähl die Stelle, die zu dir passt.</p>
           </header>
-          <div class="k-jobs k-jobs--cards" data-jobs data-reveal></div>
+          <!-- Quellen: Seite „Stellenangebote“ und Beitrag „Verstärkung fürs Team gesucht“ (2022) der
+               bestehenden Website sowie die im Funnel akzeptierten Qualifikationen je Stelle. -->
+          <ul class="k-frame" aria-label="Bei allen Stellen" data-reveal>
+            <li>Vollbeschäftigung über das ganze Jahr</li>
+            <li>Feste, planbare Arbeitszeiten</li>
+            <li>Überschaubare Überstunden</li>
+            <li>Respektvoller Umgang &amp; offenes Ohr</li>
+            <li>Aufstiegschancen</li>
+          </ul>
+          <div class="k-job-list">
+          <article class="k-job" id="stelle-bauleiter" aria-labelledby="stelle-bauleiter-title" data-reveal>
+            <div class="k-job__head">
+              <p class="k-job__num">01</p>
+              <h3 class="k-job__title" id="stelle-bauleiter-title">Bauleiter im Garten- und Landschafts&shy;bau <span class="k-job__mwd">(m/w/d)</span></h3>
+              <p class="k-job__intro">Du übernimmst die eigenverantwortliche Abwicklung unserer Außenbaustellen – vom privaten Garten bis zum Großprojekt.</p>
+              <ul class="k-job__meta"><li>Vollzeit, ganzjährig</li><li>Leitende Funktion</li><li>Ennigerloh-Enniger</li></ul>
+              <button type="button" class="btn btn--primary k-job__cta" data-stelle="Bauleiter im Garten- und Landschaftsbau (m/w/d)">Jetzt als Bauleiter bewerben <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <div class="k-job__body">
+              <div>
+                <h4>Das erwartet dich</h4>
+                <ul class="k-list">
+                  <li>Eigenverantwortliche Abwicklung der Außenbaustellen</li>
+                  <li>Bau von hochwertigen Privatgärten mit Teich- und Zaunanlagen inklusive Natursteinarbeiten</li>
+                  <li>Realisierung von Großprojekten im Wohnungs- und Industrieanlagenbau</li>
+                  <li>Diverse vegetationstechnische Arbeiten</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Das bringst du mit</h4>
+                <ul class="k-list">
+                  <li>Meister, Techniker oder Ingenieur im Garten- &amp; Landschaftsbau – oder eine abgeschlossene Ausbildung im GaLaBau</li>
+                  <li>Handwerkliches Können und Fachwissen</li>
+                  <li>Teamfähigkeit und gute Kommunikationsfähigkeit</li>
+                  <li>Ein sicheres Auftreten gegenüber unseren Kunden</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="k-job" id="stelle-vorarbeiter" aria-labelledby="stelle-vorarbeiter-title" data-reveal>
+            <div class="k-job__head">
+              <p class="k-job__num">02</p>
+              <h3 class="k-job__title" id="stelle-vorarbeiter-title">Vorarbeiter im Garten- und Landschafts&shy;bau <span class="k-job__mwd">(m/w/d)</span></h3>
+              <p class="k-job__intro">Du übernimmst Verantwortung im Team auf unseren Baustellen – im Neubau und in der Gartenpflege.</p>
+              <ul class="k-job__meta"><li>Vollzeit, ganzjährig</li><li>Leitende Funktion</li><li>Ennigerloh-Enniger</li></ul>
+              <button type="button" class="btn btn--primary k-job__cta" data-stelle="Vorarbeiter im Garten- und Landschaftsbau (m/w/d)">Jetzt als Vorarbeiter bewerben <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <div class="k-job__body">
+              <div>
+                <h4>Das erwartet dich</h4>
+                <ul class="k-list">
+                  <li>Leitende Funktion im Baustellenteam</li>
+                  <li>Bau von hochwertigen Privatgärten mit Teich- und Zaunanlagen inklusive Natursteinarbeiten</li>
+                  <li>Realisierung von Großprojekten im Wohnungs- und Industrieanlagenbau</li>
+                  <li>Diverse vegetationstechnische Arbeiten</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Das bringst du mit</h4>
+                <ul class="k-list">
+                  <li>Eine abgeschlossene Ausbildung zum Gärtner (m/w/d) – oder mehrjährige Erfahrung im GaLaBau</li>
+                  <li>Handwerkliches Können und Fachwissen</li>
+                  <li>Teamfähigkeit und gute Kommunikationsfähigkeit</li>
+                  <li>Ein sicheres Auftreten gegenüber unseren Kunden</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="k-job" id="stelle-landschaftsgaertner" aria-labelledby="stelle-landschaftsgaertner-title" data-reveal>
+            <div class="k-job__head">
+              <p class="k-job__num">03</p>
+              <h3 class="k-job__title" id="stelle-landschaftsgaertner-title">Landschafts&shy;gärtner <span class="k-job__mwd">(m/w/d)</span></h3>
+              <p class="k-job__intro">Du packst mit an, wenn aus Plänen Gärten werden – mit Ausbildung, mit Erfahrung oder als Quereinsteiger.</p>
+              <ul class="k-job__meta"><li>Vollzeit, ganzjährig</li><li>Neubau &amp; Pflege</li><li>Ennigerloh-Enniger</li></ul>
+              <button type="button" class="btn btn--primary k-job__cta" data-stelle="Landschaftsgärtner (m/w/d)">Jetzt als Landschafts&shy;gärtner bewerben <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            </div>
+            <div class="k-job__body">
+              <div>
+                <h4>Das erwartet dich</h4>
+                <ul class="k-list">
+                  <li>Bau von hochwertigen Privatgärten mit Teich- und Zaunanlagen inklusive Natursteinarbeiten</li>
+                  <li>Realisierung von Großprojekten im Wohnungs- und Industrieanlagenbau</li>
+                  <li>Diverse vegetationstechnische Arbeiten</li>
+                  <li>Einsatz im Garten- &amp; Landschaftsbau (Neubau &amp; Gestaltung) oder in der Grünflächen- &amp; Gartenpflege</li>
+                </ul>
+              </div>
+              <div>
+                <h4>Das bringst du mit</h4>
+                <ul class="k-list">
+                  <li>Eine Ausbildung als Landschaftsgärtner (m/w/d), Meister oder Techniker – oder Erfahrung ohne Ausbildung</li>
+                  <li>Auch Quereinsteiger sind willkommen</li>
+                  <li>Teamfähigkeit und gute Kommunikationsfähigkeit</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          </div>
         </div>
       </section>
     </div>

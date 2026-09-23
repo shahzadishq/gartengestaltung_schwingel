@@ -44,6 +44,12 @@ Ablauf stammen 1:1 aus dem Bewerbungs-Funnel schwingel-karriere.vercel.app:
   rechts Frage bzw. Formular. Es sind dieselben 4 Fragen je Stelle, dieselbe „Danke für deine
   Ehrlichkeit!“-Weiterleitung, dieselben Formularfelder und Prüfungen, 3 Sendeversuche,
   dieselbe Fehlermeldung und Erfolgsseite.
+- **Stellen im Detail:** Je Stelle „Das erwartet dich“ und „Das bringst du mit“, dazu
+  Rahmenbedingungen für alle Stellen. Der Funnel selbst enthält keine Stellenbeschreibungen. Die Texte
+  stammen deshalb aus der Altseite: „Stellenangebote“ (Aufgaben, Erwartungen) und der Beitrag
+  „Verstärkung fürs Team gesucht“ (2022: ganzjährige Vollbeschäftigung, planbare Arbeitszeiten,
+  überschaubare Überstunden, Aufstiegschancen, leitende Funktionen). Die Qualifikationen je Stelle sind
+  die, die der Funnel akzeptiert. **Bitte vom Kunden prüfen und ergänzen lassen.**
 - **Bewerbungsdaten** gehen Feld für Feld identisch zum Original an denselben Make-Webhook.
 - **Tracking aus:** Meta Pixel und greenhub-Funnel-Tracking sind für die Demo abgeschaltet
   (`tracking: false` in `karriere/karriere.js`). Einschalten erst, wenn die Seite live geht und ein
@@ -110,6 +116,9 @@ Alle Bildstellen sind im HTML mit `<!-- BILDPLATZ: … -->` markiert.
 - [ ] Text für Baumfällarbeiten freigeben: Die Altseite ist dort „im Aufbau“, der Text bleibt deshalb bewusst knapp
 - [ ] Impressum/Datenschutz verlinken aktuell auf die bestehenden Seiten, beim Relaunch umstellen
 - [ ] Optional: Kontaktformular statt `mailto:`-Link (benötigt Backend oder Formular-Dienst)
+- [ ] Stellenbeschreibungen auf der Karriere-Seite vom Kunden freigeben lassen (Quelle: Altseite, teils von 2022)
+- [ ] ⚠️ Altseite: Unter schwingel-gartengestaltung.de/karriere/ steht die Stellenanzeige einer
+      fremden Firma (Steuerberatung in Warendorf). Kunde informieren.
 
 ## Technik & Qualität
 
