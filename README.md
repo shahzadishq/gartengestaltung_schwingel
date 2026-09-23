@@ -83,13 +83,13 @@ Alle Bildstellen sind im HTML mit `<!-- BILDPLATZ: … -->` markiert.
 | `insta-garten-schubkarre.jpg`, `insta-team-shirt.jpg` | Über uns (Zweitbild), Warum Schwingel | aus Instagram, nur 512 px – reicht für die kleinen Formate |
 | `person-*.jpg` | Ansprechpartner im CTA | Porträts der Altseite, 200 px |
 | `leistung-*.jpg` | Leistungen | 800 px von der Altseite – bessere Instagram-Fotos willkommen |
-| – | Baumfällarbeiten, Grabgestaltung | **Platzhalter**: Es gibt noch kein geeignetes Foto |
+| `leistung-baumfaellung.jpg`, `leistung-grab.jpg` | Baumfällarbeiten, Grabgestaltung | Banner der Altseite, nur 600×220 px – werden unbeschnitten auf unscharfem Hintergrund gezeigt. **Größere Fotos gewünscht** |
 
 ## Offene Punkte vor dem Livegang
 
 - [ ] Mitarbeiterzahl „25“ bestätigen (Stand der Altseite)
 - [ ] Hero-Foto in höherer Auflösung liefern
-- [ ] Fotos für Baumfällarbeiten und Friedhofs- & Grabgestaltung liefern
+- [ ] Größere Fotos für Baumfällarbeiten und Friedhofs- & Grabgestaltung liefern (aktuell 600×220 px von der Altseite)
 - [ ] Text für Baumfällarbeiten freigeben: Die Altseite ist dort „im Aufbau“, der Text bleibt deshalb bewusst knapp
 - [ ] Impressum/Datenschutz verlinken aktuell auf die bestehenden Seiten, beim Relaunch umstellen
 - [ ] Optional: Kontaktformular statt `mailto:`-Link (benötigt Backend oder Formular-Dienst)

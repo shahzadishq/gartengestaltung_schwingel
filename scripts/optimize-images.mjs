@@ -23,6 +23,9 @@ const IMAGES = {
   'leistung-teich': [480, 800],
   'leistung-einfriedung': [480, 800],
   'leistung-baumschnitt': [480, 800],
+  // Altseite hat hierfür nur 600×220-Banner → werden unbeschnitten gezeigt
+  'leistung-baumfaellung': [600],
+  'leistung-grab': [600],
 };
 
 await mkdir(OUT, { recursive: true });

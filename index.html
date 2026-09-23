@@ -231,8 +231,20 @@
                 <source type="image/webp" srcset="assets/img/leistung-baumschnitt-800.webp">
                 <img src="assets/img/leistung-baumschnitt-800.jpg" width="800" height="600" alt="" loading="lazy" decoding="async">
               </picture>
-              <div class="stage-img placeholder" data-stage="6"><span class="placeholder__tag">Bildplatz</span><span>Projektfoto Baumfällarbeiten folgt</span></div>
-              <div class="stage-img placeholder" data-stage="7"><span class="placeholder__tag">Bildplatz</span><span>Foto Grabgestaltung folgt</span></div>
+              <div class="stage-img stage-img--wide" data-stage="6">
+                <img class="stage-img__blur" src="assets/img/leistung-baumfaellung-600.webp" width="600" height="220" alt="" loading="lazy" decoding="async">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/leistung-baumfaellung-600.webp">
+                  <img src="assets/img/leistung-baumfaellung-600.jpg" width="600" height="220" alt="" loading="lazy" decoding="async">
+                </picture>
+              </div>
+              <div class="stage-img stage-img--wide" data-stage="7">
+                <img class="stage-img__blur" src="assets/img/leistung-grab-600.webp" width="600" height="220" alt="" loading="lazy" decoding="async">
+                <picture>
+                  <source type="image/webp" srcset="assets/img/leistung-grab-600.webp">
+                  <img src="assets/img/leistung-grab-600.jpg" width="600" height="220" alt="" loading="lazy" decoding="async">
+                </picture>
+              </div>
               <p class="services__counter"><span data-stage-num>01</span> / 08</p>
             </div>
           </div>
@@ -369,14 +381,17 @@
                 <button type="button" class="service__toggle" aria-expanded="false" aria-controls="svc-6">
                   <span class="service__num">07</span>
                   <span class="service__title">Baumfäll&shy;arbeiten</span>
-                  <span class="service__thumb placeholder" aria-hidden="true"></span>
+                  <span class="service__thumb" aria-hidden="true"><img src="assets/img/leistung-baumfaellung-600.webp" width="600" height="220" alt="" loading="lazy"></span>
                   <span class="service__chev" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="service__panel" id="svc-6">
                 <div class="service__panel-inner">
-                  <!-- BILDPLATZ: Baumfällarbeiten – eigenes Projektfoto einsetzen -->
-                  <div class="service__img placeholder"><span class="placeholder__tag">Bildplatz</span><span>Projektfoto Baumfällarbeiten folgt</span></div>
+                  <!-- BILDPLATZ: Baumfällarbeiten – Banner der Altseite (600×220), größeres Foto gewünscht -->
+                  <picture class="service__img service__img--wide">
+                    <source type="image/webp" srcset="assets/img/leistung-baumfaellung-600.webp">
+                    <img src="assets/img/leistung-baumfaellung-600.jpg" width="600" height="220" loading="lazy" decoding="async" alt="Gärtner in Schutzkleidung fällt einen Baum mit der Motorsäge">
+                  </picture>
                   <p class="service__sub">Mit geprüfter Kompetenz</p>
                   <p>Baumfällarbeiten gehören fest zu unserem Leistungsspektrum. Zu unserem Team gehört ein FFL-zertifizierter Baumkontrolleur. Sprechen Sie uns zu Ihrem Vorhaben an.</p>
                 </div>
@@ -388,14 +403,17 @@
                 <button type="button" class="service__toggle" aria-expanded="false" aria-controls="svc-7">
                   <span class="service__num">08</span>
                   <span class="service__title">Friedhofs- &amp; Grab&shy;gestaltung</span>
-                  <span class="service__thumb placeholder" aria-hidden="true"></span>
+                  <span class="service__thumb" aria-hidden="true"><img src="assets/img/leistung-grab-600.webp" width="600" height="220" alt="" loading="lazy"></span>
                   <span class="service__chev" aria-hidden="true"></span>
                 </button>
               </h3>
               <div class="service__panel" id="svc-7">
                 <div class="service__panel-inner">
-                  <!-- BILDPLATZ: Grabgestaltung – eigenes Foto einsetzen -->
-                  <div class="service__img placeholder"><span class="placeholder__tag">Bildplatz</span><span>Foto Grabgestaltung folgt</span></div>
+                  <!-- BILDPLATZ: Grabgestaltung – Banner der Altseite (600×220), größeres Foto gewünscht -->
+                  <picture class="service__img service__img--wide">
+                    <source type="image/webp" srcset="assets/img/leistung-grab-600.webp">
+                    <img src="assets/img/leistung-grab-600.jpg" width="600" height="220" loading="lazy" decoding="async" alt="Frühlingsbepflanzung mit Stiefmütterchen und Gänseblümchen für die Grabgestaltung">
+                  </picture>
                   <p class="service__sub">Mit viel Einfühlungsvermögen</p>
                   <p>Die regelmäßige Grabpflege gehört ebenso zu unseren Aufgaben wie die Neugestaltung von Gräbern. Individuelle Wünsche und traditionsreiche Gestaltung – mit viel Einfühlungsvermögen und höchster Professionalität.</p>
                 </div>
