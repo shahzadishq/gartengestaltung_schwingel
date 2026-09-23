@@ -35,19 +35,19 @@ scripts/optimize-images.mjs
 
 ## Karriere-Seite (`/karriere/`)
 
-1:1-Nachbau des bestehenden Bewerbungs-Funnels schwingel-karriere.vercel.app. Er ist ohne React
-und ohne Build-Schritt umgesetzt, damit er auf GitHub Pages läuft.
+Vollbreite Seite im Design der Startseite (gleicher Header, Footer, Schriften, Farben). Inhalte und
+Ablauf stammen 1:1 aus dem Bewerbungs-Funnel schwingel-karriere.vercel.app:
 
-- **Identisch:** alle Texte, 3 Stellen, je 4 Fragen, „Danke für deine Ehrlichkeit!“-Weiterleitung,
-  Kontaktformular (Name, Handy, E-Mail optional, Erreichbarkeit, Datenschutz), Validierung,
-  3 Sendeversuche, Fehlermeldung, Erfolgsseite. Das Stylesheet ist der Original-Tailwind-Build
-  (`karriere/karriere.css`), nur die Schriften sind selbst gehostet. Pixelvergleich mit dem Original
-  bei 390 und 1440 px: 0 abweichende Pixel auf allen Screens.
-- **Bewerbungen** gehen mit exakt denselben Feldern an denselben Make-Webhook wie das Original.
-- **Bewusst abweichend:** Meta Pixel und Funnel-Tracking (greenhub) sind standardmäßig **aus**
-  (`tracking: false` in `karriere/karriere.js`). Sie laufen ohne Cookie-Einwilligung und würden
-  sonst die Statistik der Live-Seite verfälschen. Einschalten, wenn diese Seite die Live-Seite ersetzt.
-  „Zur Webseite“ im Footer führt auf die neue Startseite statt auf die Altseite.
+- **Seite:** „Wir suchen Verstärkung“ mit Badges und Stellenwahl, „Du kannst mehr.“, 5 Vorteile,
+  „Wir vergrößern unser Team“ mit den 3 Stellen.
+- **Bewerbung:** Nach der Stellenwahl folgt eine vollbreite Ansicht: links Stelle und Fortschritt,
+  rechts Frage bzw. Formular. Es sind dieselben 4 Fragen je Stelle, dieselbe „Danke für deine
+  Ehrlichkeit!“-Weiterleitung, dieselben Formularfelder und Prüfungen, 3 Sendeversuche,
+  dieselbe Fehlermeldung und Erfolgsseite.
+- **Bewerbungsdaten** gehen Feld für Feld identisch zum Original an denselben Make-Webhook.
+- **Tracking aus:** Meta Pixel und greenhub-Funnel-Tracking sind für die Demo abgeschaltet
+  (`tracking: false` in `karriere/karriere.js`). Einschalten erst, wenn die Seite live geht und ein
+  Cookie-Banner vorhanden ist.
 
 ## Corporate Identity
 

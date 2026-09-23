@@ -1,7 +1,6 @@
-/* Karriere-Funnel Gartengestaltung Schwingel
-   1:1-Nachbau von schwingel-karriere.vercel.app ohne React/Build-Schritt:
-   gleiche Texte, gleiche Reihenfolge, gleiche CSS-Klassen, gleiche Formular-Logik
-   und gleiche Daten an denselben Make-Webhook. */
+/* Karriere-Seite Gartengestaltung Schwingel
+   Inhalte, Fragen, Formular-Logik und Bewerbungsdaten 1:1 wie im Karriere-Funnel
+   (schwingel-karriere.vercel.app) – dargestellt als vollbreite Seite im Design der Startseite. */
 (() => {
   /* ======================= Konfiguration ======================= */
   const CONFIG = {
@@ -16,9 +15,7 @@
     funnelEndpoint: 'https://greenhub-six.vercel.app/api/recruiting/funnel-event',
     quelle: 'schwingel-landingpage',
     img: {
-      logo: 'img/logo.png',
-      heroStart: 'img/hero-start.jpg',
-      headerBg: 'img/header-bg-2.jpg',
+      headerBg: '../assets/img/hero-garten-750.webp',
       success: 'img/success.jpg',
     },
   };
@@ -125,7 +122,6 @@
     ],
   };
 
-  const BENEFIT_ICONS = ['💶', '🌴', '🎉', '🤝', '🚀'];
   const ERREICHBARKEIT = ['Ganztags', 'Vormittags', 'Nachmittags', 'Abends'];
 
   const BEWERBERPROFIL = `# Bewerberprofil
@@ -163,241 +159,131 @@
     return m ? { main: m[1], suffix: m[2] } : { main: t, suffix: '' };
   };
   const findStelle = (title) => KUNDE.stellen.find((s) => s.title === title);
-  const chevron = (stroke = 'white', size = 18) =>
-    `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="${stroke}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
+  const ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
 
-  /* ======================= Bausteine (Komponenten des Originals) ======================= */
-  const Logo = (onDark = false) => {
-    const img = `<img src="${CONFIG.img.logo}" alt="Gartengestaltung Schwingel" class="h-7 w-auto object-contain sm:h-8">`;
-    return onDark ? `<span class="inline-flex items-center rounded-xl bg-white px-2.5 py-1.5 shadow-md">${img}</span>` : img;
+  /* ======================= Bausteine ======================= */
+  const JobButton = (title) => {
+    const { main, suffix } = splitTitle(title);
+    return `<button type="button" class="job-btn" data-stelle="${esc(title)}">
+      <span class="job-btn__title">${esc(main)}</span>
+      ${suffix ? `<span class="job-btn__suffix">${esc(suffix)}</span>` : ''}
+      <span class="job-btn__arrow">${ARROW}</span>
+    </button>`;
   };
 
-  const Footer = () => `
-    <div class="border-t border-surface-border bg-surface-soft px-6 py-3.5 text-center text-[11px] font-medium text-ink-muted">
-      <a href="https://www.schwingel-gartengestaltung.de/impressum/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 transition-colors hover:text-brand">Impressum</a><span class="mx-2 text-ink-subtle">·</span><a href="https://www.schwingel-gartengestaltung.de/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 transition-colors hover:text-brand">Datenschutz</a><span class="mx-2 text-ink-subtle">·</span><a href="../" class="underline underline-offset-2 transition-colors hover:text-brand">Zur Webseite</a>
+  const Badge = () => `
+    <div class="k-badge">
+      <span class="k-badge__frame" aria-hidden="true"></span>
+      <span class="k-badge__main">Du<br>kannst<br>mehr<span class="dot">.</span></span>
+      <span class="k-badge__sub">Dein Job sollte das<br>auch können<span class="dot">.</span></span>
+      <span class="k-badge__line" aria-hidden="true"></span>
     </div>`;
 
-  const BADGE_SIZES = {
-    lg: { main: 'text-[44px] sm:text-[56px]', sub: 'text-[14px] sm:text-[18px]', pad: 'px-4 py-2.5 sm:px-5 sm:py-3' },
-    sm: { main: 'text-[26px] sm:text-[30px]', sub: 'text-[9px] sm:text-[10px]', pad: 'px-2.5 py-1.5' },
-  };
-  const DuKannstMehr = (size = 'lg', animate = false, extra = '') => {
-    const r = BADGE_SIZES[size];
-    const lg = size === 'lg';
-    return `
-      <div class="inline-block ${animate ? 'animate-float' : ''} ${extra}">
-        <div class="relative -rotate-[4deg]">
-          <span aria-hidden="true" class="absolute block border-brand ${lg ? '-left-3 -top-3 h-[118%] w-[56%] border-[4px]' : '-left-2 -top-2 h-[116%] w-[58%] border-[3px]'}"></span>
-          <div class="relative bg-brand-deep ${r.pad} shadow-block">
-            <span class="block font-display uppercase leading-[0.84] tracking-[-0.015em] text-white ${r.main}">Du<br>Kannst<br>Mehr<span class="text-brand-light">.</span></span>
-          </div>
-          <div class="relative ${lg ? '-mt-1 ml-5' : '-mt-0.5 ml-3'} w-fit -skew-x-[12deg] bg-brand ${lg ? 'px-3 py-1.5' : 'px-2 py-1'}">
-            <span class="block font-sans font-black uppercase italic leading-[1.08] tracking-[0.01em] text-white ${r.sub}">Dein Job sollte das<br>auch können<span class="text-brand-light">.</span></span>
-          </div>
-          <span aria-hidden="true" class="mt-1 block h-[2px] -skew-x-[12deg] bg-brand ${lg ? 'ml-8 w-[62%]' : 'ml-5 w-[55%]'}"></span>
+  const STEP_NAMES = ['Bereich', 'Qualifikation', 'Erfahrung', 'Führerschein', 'Kontaktdaten'];
+  // Seitenleiste: Bild, gewählte Stelle, Fortschritt (Punkte mobil, Schrittliste Desktop)
+  const Aside = (current, total) => `
+    <aside class="funnel__aside">
+      <picture class="funnel__aside-bg"><img src="${CONFIG.img.headerBg}" alt="" width="750" height="1000"></picture>
+      <div class="funnel__aside-inner">
+        <div class="funnel__top">
+          <button type="button" class="funnel__back" data-back><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Zurück</button>
+          ${Badge()}
         </div>
-      </div>`;
-  };
-
-  const OrtPin = (text) => `
-    <span class="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-[12px] font-semibold text-brand shadow-md">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.686 7-11a7 7 0 10-14 0c0 5.314 7 11 7 11z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"></path><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2.2"></circle></svg>${esc(text)}
-    </span>`;
-
-  const Chip = (text) => `
-    <span class="inline-flex items-center gap-1 rounded-full border-2 border-accent-limeLight bg-white px-2.5 py-1 text-[11px] font-semibold text-brand-deep">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg>${esc(text)}
-    </span>`;
-
-  const StellenListe = () => `
-    <div class="flex flex-col gap-3">
-      ${KUNDE.stellen.map((s, i) => {
-        const { main, suffix } = splitTitle(s.title);
-        return `
-        <button type="button" data-stelle="${esc(s.title)}" style="animation-delay: ${i * 70}ms;" class="group relative w-full animate-slide-up overflow-hidden rounded-2xl bg-brand px-5 py-5 pr-14 text-left shadow-block transition-all duration-200 hover:bg-brand-dark active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
-          <span aria-hidden="true" class="absolute inset-y-0 left-0 w-1.5 bg-accent-limeLight transition-all duration-200 group-hover:w-2.5"></span>
-          <span class="block font-sans text-[16px] font-bold uppercase leading-[1.15] tracking-[0.01em] text-white sm:text-[17px]">${esc(main)}</span>
-          ${suffix ? `<span class="mt-1 block text-[13px] font-semibold text-white/65">${esc(suffix)}</span>` : ''}
-          <span aria-hidden="true" class="absolute right-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 transition-transform duration-200 group-hover:translate-x-0.5">${chevron('white', 18)}</span>
-        </button>`;
-      }).join('')}
-    </div>`;
-
-  const Vorteile = () => `
-    <div class="relative overflow-hidden bg-brand-deep bg-grid px-5 py-9">
-      <div class="relative">
-        <p class="text-[12px] font-bold uppercase tracking-[0.18em] text-accent-limeLight">Deine Vorteile</p>
-        <h2 class="mt-1 font-display text-[24px] uppercase leading-[1.05] tracking-[-0.01em] text-white sm:text-[28px]">Was dir<br>Schwingel bietet</h2>
-        <div class="mt-6 flex flex-col gap-3">
-          ${KUNDE.benefits.map((b, i) => `
-          <div style="animation-delay: ${i * 80}ms;" class="group flex animate-slide-up items-center gap-4 rounded-2xl border-2 border-accent-limeLight/70 bg-white/[0.07] p-3.5 backdrop-blur-sm transition-colors hover:border-accent-limeLight hover:bg-white/[0.12]">
-            <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-limeLight text-[22px] shadow-sm">${BENEFIT_ICONS[i] ?? '✓'}</span>
-            <span class="text-[15px] font-bold leading-snug text-white sm:text-[16px]">${esc(b)}</span>
-          </div>`).join('')}
+        <div class="funnel__job">
+          <small>Deine Bewerbung als</small>
+          <strong>${esc(state.data.bereich)}</strong>
         </div>
-      </div>
-    </div>`;
-
-  const Titel = (text, sub) => `
-    <div class="px-5 pb-4 pt-5">
-      <h1 class="font-display text-[22px] uppercase leading-[1.05] tracking-[-0.01em] text-brand-deep sm:text-[25px]">${esc(text)}</h1>
-      ${sub ? `<p class="mt-1.5 text-[14px] font-medium leading-snug text-ink-muted">${esc(sub)}</p>` : ''}
-    </div>`;
-
-  const AntwortButton = (label, index) => `
-    <div class="animate-slide-up" style="animation-delay: ${index * 60}ms;">
-      <button type="button" data-antwort="${index}" class="group relative w-full overflow-hidden rounded-2xl px-5 py-4 pr-14 text-left transition-all duration-200 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 bg-brand text-white shadow-block hover:bg-brand-dark">
-        <span aria-hidden="true" class="absolute inset-y-0 left-0 w-1.5 transition-all duration-200 group-hover:w-2.5 bg-accent-limeLight"></span>
-        <span class="block text-[15px] font-bold leading-snug">${esc(label)}</span>
-        <span aria-hidden="true" class="absolute right-3.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full transition-transform duration-200 group-hover:translate-x-0.5 bg-white/15">${chevron('currentColor', 17)}</span>
-      </button>
-    </div>`;
-
-  const SchrittHeader = (current, total) => `
-    <div class="relative overflow-hidden bg-brand-deep px-4 pb-4 pt-3.5">
-      <img src="${CONFIG.img.headerBg}" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover object-center">
-      <div class="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black/40 to-transparent"></div>
-      <div class="absolute inset-0 bg-black/5"></div>
-      <div class="relative flex items-start justify-between gap-3">
-        <button type="button" data-back class="-ml-1 inline-flex items-center gap-1 rounded-lg px-1.5 py-1 text-[13px] font-semibold text-white/70 transition-colors hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>Zurück
-        </button>
-        ${Logo(true)}
-      </div>
-      <div class="relative mt-3 flex items-end justify-between gap-4">
-        ${DuKannstMehr('sm')}
-        <div class="flex items-center gap-1.5 rounded-full bg-brand-deep/55 px-2.5 py-1.5 backdrop-blur-sm">
-          ${Array.from({ length: total }, (_, i) => `<span class="h-1.5 rounded-full transition-all duration-300 ${i <= current ? 'w-6 bg-accent-limeLight' : 'w-2.5 bg-white/45'}"></span>`).join('')}
+        <div class="funnel__dots" aria-hidden="true">
+          ${Array.from({ length: total }, (_, i) => `<span class="${i <= current ? 'is-done' : ''}"></span>`).join('')}
         </div>
-      </div>
-    </div>`;
-
-  const FeldIcon = (name) => {
-    const s = 'currentColor';
-    if (name === 'user') return `<svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 20c1-4 4-6 8-6s7 2 8 6M12 12a4 4 0 100-8 4 4 0 000 8z" stroke="${s}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>`;
-    if (name === 'mail') return `<svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="${s}" stroke-width="2"></rect><path d="M3.5 7.5l8.5 6 8.5-6" stroke="${s}" stroke-width="2"></path></svg>`;
-    return `<svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="${s}" stroke-width="2" stroke-linejoin="round"></path></svg>`;
-  };
-  const Feld = (icon, input) => `
-    <div class="flex items-center gap-3 rounded-2xl border-2 border-surface-border bg-white px-4 py-3 transition-colors focus-within:border-brand">
-      <span class="shrink-0 text-brand/60">${FeldIcon(icon)}</span>
-      <div class="min-w-0 flex-1">${input}</div>
-    </div>`;
-  const INPUT_CLS = 'w-full bg-transparent text-[15px] font-medium outline-none placeholder:font-normal placeholder:text-ink-subtle';
-  const chipCls = (active) =>
-    `rounded-full px-4 py-2 text-[13px] transition-all active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-1 ${active ? 'bg-brand font-semibold text-white shadow-sm' : 'border-2 border-surface-border bg-white font-medium text-ink hover:border-brand/40'}`;
-
-  /* ======================= Screens ======================= */
-  const StartScreen = () => `
-    <div class="animate-fade-in">
-      <div class="relative h-64 overflow-hidden bg-brand-deep">
-        <img src="${CONFIG.img.heroStart}" alt="Das Team von Gartengestaltung Schwingel bei der Arbeit" class="absolute inset-0 h-full w-full object-cover object-[center_28%]">
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-deep/95 via-brand-deep/30 to-black/35"></div>
-        <div class="relative flex items-start justify-between gap-3 p-4">${OrtPin(KUNDE.ort)}${Logo(true)}</div>
-        <div class="absolute inset-x-0 bottom-0 px-5 pb-4">
-          <h1 class="font-display text-[30px] uppercase leading-[0.92] tracking-[-0.01em] text-white drop-shadow-sm sm:text-[34px]">Wir suchen<br>Verstärkung</h1>
-          <div class="mt-3 flex flex-wrap gap-1.5">${Chip('100 % diskret')}${Chip('Unverbindlich')}${Chip('In 2 Minuten')}</div>
-        </div>
-      </div>
-      <div class="px-5 pb-7 pt-6">
-        <h1 class="font-display text-[21px] uppercase leading-[1.08] tracking-[-0.01em] text-brand-deep sm:text-[24px]">Welche Stelle interessiert dich?</h1>
-        <div class="mt-5">${StellenListe()}</div>
-      </div>
-      <div class="relative flex justify-center overflow-hidden bg-brand-deep px-5 py-10">
-        <img src="${CONFIG.img.headerBg}" alt="" aria-hidden="true" class="absolute inset-0 h-full w-full object-cover object-center">
-        <div class="absolute inset-0 bg-black/15"></div>
-        ${DuKannstMehr('lg', true, 'relative')}
-      </div>
-      ${Vorteile()}
-      <div class="px-5 pb-8 pt-8">
-        <h2 class="font-display text-[20px] uppercase leading-[1.1] tracking-[-0.01em] text-brand-deep sm:text-[23px]">Wir vergrößern unser Team</h2>
-        <p class="mt-1.5 text-[14px] font-medium text-ink-muted">Verstärke uns — wähl die Stelle, die zu dir passt.</p>
-        <div class="mt-5">${StellenListe()}</div>
-      </div>
-      ${Footer()}
-    </div>`;
-
-  const FrageScreen = (frage, index, total) => `
-    <div class="animate-fade-in">
-      ${SchrittHeader(index, total)}
-      ${Titel(frage.frage)}
-      <div class="flex flex-col gap-3 px-5 pb-6">${frage.antworten.map((a, i) => AntwortButton(a.label, i)).join('')}</div>
-      ${Footer()}
-    </div>`;
-
-  const HinweisScreen = (vorschlaege, current, total) => `
-    <div class="animate-fade-in">
-      ${SchrittHeader(current, total)}
-      ${Titel('Danke für deine Ehrlichkeit!', 'Kein Problem — vielleicht passt eine dieser Stellen sogar besser zu dir:')}
-      <div class="flex flex-col gap-3 px-5 pb-4">
-        ${vorschlaege.map((v) => `
-        <button type="button" data-stelle="${esc(v)}" class="group relative w-full overflow-hidden rounded-2xl bg-brand px-5 py-4 pr-12 text-left shadow-block transition-all duration-200 hover:bg-brand-dark active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2">
-          <span aria-hidden="true" class="absolute inset-y-0 left-0 w-1.5 bg-accent-limeLight"></span>
-          <span class="block text-[15px] font-bold leading-snug text-white">${esc(v)}</span>
-          <span aria-hidden="true" class="absolute right-3.5 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 transition-transform duration-200 group-hover:translate-x-0.5">${chevron('white', 17)}</span>
-        </button>`).join('')}
-      </div>
-      <div class="pb-6"></div>
-      ${Footer()}
-    </div>`;
-
-  const KontaktScreen = (current, total, d) => `
-    <div class="animate-fade-in">
-      ${SchrittHeader(current, total)}
-      ${Titel('Fast geschafft!', 'Nur noch deine Kontaktdaten — wir rufen dich an.')}
-      <form data-form class="flex flex-col gap-2.5 px-5 pb-5" autocomplete="on" novalidate>
-        ${Feld('user', `<input type="text" name="name" id="bewerber-name" placeholder="Dein vollständiger Name" value="${esc(d.name)}" autocomplete="name" required class="${INPUT_CLS}">`)}
-        ${Feld('phone', `<input type="tel" name="tel" id="bewerber-tel" placeholder="Deine Handynummer" value="${esc(d.phone)}" autocomplete="tel" inputmode="tel" required class="${INPUT_CLS}">`)}
-        ${Feld('mail', `<input type="email" name="email" id="bewerber-email" placeholder="Deine E-Mail Adresse (optional)" value="${esc(d.email)}" autocomplete="email" inputmode="email" class="${INPUT_CLS}">`)}
-        <div class="mt-1.5">
-          <p class="mb-2 text-[13px] font-medium text-ink">Wann bist du am besten erreichbar?</p>
-          <div class="flex flex-wrap gap-2">
-            ${ERREICHBARKEIT.map((e) => {
-              const active = (d.erreichbarkeit || 'Ganztags') === e;
-              return `<button type="button" data-erreichbar="${e}" aria-pressed="${active}" class="${chipCls(active)}">${e}</button>`;
-            }).join('')}
-          </div>
-        </div>
-        <label class="mt-2 flex cursor-pointer items-start gap-2.5 text-[13px] leading-snug text-ink">
-          <input type="checkbox" name="datenschutz" ${d.datenschutz ? 'checked' : ''} class="mt-0.5 h-[18px] w-[18px] accent-brand" required>
-          <span>Ich akzeptiere die <a href="https://www.schwingel-gartengestaltung.de/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer" class="font-semibold text-brand underline underline-offset-2">Datenschutzbestimmungen</a></span>
-        </label>
-        <div data-fehler hidden class="rounded-xl border border-red-200 bg-red-50 px-3.5 py-3 text-[13px] leading-relaxed text-red-700">
-          <span class="font-semibold">Das Absenden hat leider nicht geklappt.</span> Bitte versuche es gleich noch einmal — oder schreib uns direkt an <a href="mailto:hello@greenfield-digital.de?subject=Bewerbung%20Gartengestaltung%20Schwingel" class="font-semibold underline underline-offset-2">hello@greenfield-digital.de</a>, dann geht deine Bewerbung garantiert nicht verloren.
-        </div>
-        <button type="submit" data-submit class="group relative mt-2 w-full overflow-hidden rounded-2xl bg-brand py-4 font-display text-[17px] uppercase tracking-[0.01em] text-white shadow-block transition-all duration-200 hover:bg-brand-dark active:scale-[0.985] disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none">
-          <span aria-hidden="true" class="absolute inset-y-0 left-0 w-1.5 bg-accent-limeLight"></span><span data-submit-label>Jetzt bewerben!</span>
-        </button>
-        <p class="mt-1 text-center text-[12px] leading-relaxed text-ink-muted">Wir verwenden deine Daten ausschließlich für den Bewerbungsprozess und die Kontaktaufnahme.</p>
-      </form>
-      <div class="mx-5 mb-6 flex items-center justify-center gap-2 rounded-2xl bg-canvas px-4 py-2.5 text-center text-[12px] font-semibold text-brand">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5" stroke="currentColor" stroke-width="2.2"></rect><path d="M8 10V7a4 4 0 018 0v3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"></path></svg>100 % sichere Datenverbindung
-      </div>
-      <div class="border-t border-surface-border px-5 py-6">
-        <h2 class="text-center font-display text-[15px] uppercase tracking-[0.02em] text-brand-deep">So geht's danach weiter</h2>
-        <ol class="mt-4 flex flex-col gap-4">
-          <li class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand font-display text-[13px] text-white">1</span><span class="pt-0.5 text-[14px] leading-relaxed text-ink">Wir melden uns innerhalb von <b>48 Stunden</b> bei dir für ein kurzes Kennenlerngespräch.</span></li>
-          <li class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand font-display text-[13px] text-white">2</span><span class="pt-0.5 text-[14px] leading-relaxed text-ink">Passt es für beide Seiten, laden wir dich zum Vorstellungsgespräch ein.</span></li>
+        <ol class="funnel__steps" aria-label="Fortschritt">
+          ${Array.from({ length: total }, (_, i) => {
+            const cls = i < current ? 'is-done' : i === current ? 'is-current' : '';
+            return `<li class="${cls}"${i === current ? ' aria-current="step"' : ''}><span class="n">${i < current ? '✓' : i + 1}</span>${STEP_NAMES[i] ?? ''}</li>`;
+          }).join('')}
         </ol>
       </div>
-      ${Footer()}
+    </aside>`;
+
+  const Shell = (current, total, main) => `
+    <div class="funnel__grid">
+      ${Aside(current, total)}
+      <div class="funnel__main">${main}</div>
     </div>`;
 
+  const Count = (current, total) => `<p class="funnel__count">Schritt ${current + 1} von ${total}</p>`;
+
+  /* ======================= Screens ======================= */
+  const FrageScreen = (frage, index, total) => Shell(index, total, `
+    ${Count(index, total)}
+    <h1 class="funnel__title" tabindex="-1">${esc(frage.frage)}</h1>
+    <div class="funnel__answers">
+      ${frage.antworten.map((a, i) => `
+      <button type="button" class="answer-btn" data-antwort="${i}" style="--i:${i}">
+        <span class="answer-btn__label">${esc(a.label)}</span>
+        <span class="answer-btn__arrow">${ARROW}</span>
+      </button>`).join('')}
+    </div>`);
+
+  const HinweisScreen = (vorschlaege, current, total) => Shell(current, total, `
+    <h1 class="funnel__title" tabindex="-1">Danke für deine Ehrlichkeit!</h1>
+    <p class="funnel__sub">Kein Problem — vielleicht passt eine dieser Stellen sogar besser zu dir:</p>
+    <div class="funnel__answers">${vorschlaege.map((v) => JobButton(v)).join('')}</div>`);
+
+  const ICON = {
+    user: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c1-4 4-6 8-6s7 2 8 6M12 12a4 4 0 100-8 4 4 0 000 8z"/></svg>',
+    phone: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>',
+    mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg>',
+  };
+
+  const KontaktScreen = (current, total, d) => Shell(current, total, `
+    ${Count(current, total)}
+    <h1 class="funnel__title" tabindex="-1">Fast geschafft!</h1>
+    <p class="funnel__sub">Nur noch deine Kontaktdaten — wir rufen dich an.</p>
+    <form class="k-form" data-form autocomplete="on" novalidate>
+      <label class="k-field"><span class="sr-only">Name</span>${ICON.user}<input type="text" name="name" id="bewerber-name" placeholder="Dein vollständiger Name" value="${esc(d.name)}" autocomplete="name" required></label>
+      <div class="k-form__row">
+        <label class="k-field"><span class="sr-only">Handynummer</span>${ICON.phone}<input type="tel" name="tel" id="bewerber-tel" placeholder="Deine Handynummer" value="${esc(d.phone)}" autocomplete="tel" inputmode="tel" required></label>
+        <label class="k-field"><span class="sr-only">E-Mail</span>${ICON.mail}<input type="email" name="email" id="bewerber-email" placeholder="Deine E-Mail Adresse (optional)" value="${esc(d.email)}" autocomplete="email" inputmode="email"></label>
+      </div>
+      <div>
+        <p class="k-form__label" id="reach-label">Wann bist du am besten erreichbar?</p>
+        <div class="k-reach" role="group" aria-labelledby="reach-label">
+          ${ERREICHBARKEIT.map((e) => `<button type="button" data-erreichbar="${e}" aria-pressed="${(d.erreichbarkeit || 'Ganztags') === e}">${e}</button>`).join('')}
+        </div>
+      </div>
+      <label class="k-check">
+        <input type="checkbox" name="datenschutz" ${d.datenschutz ? 'checked' : ''} required>
+        <span>Ich akzeptiere die <a href="https://www.schwingel-gartengestaltung.de/datenschutzerklaerung/" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen</a></span>
+      </label>
+      <div class="k-error" data-fehler hidden role="alert">
+        <strong>Das Absenden hat leider nicht geklappt.</strong> Bitte versuche es gleich noch einmal — oder schreib uns direkt an <a href="mailto:hello@greenfield-digital.de?subject=Bewerbung%20Gartengestaltung%20Schwingel">hello@greenfield-digital.de</a>, dann geht deine Bewerbung garantiert nicht verloren.
+      </div>
+      <button type="submit" class="k-submit" data-submit><span data-submit-label>Jetzt bewerben!</span></button>
+      <p class="k-note">Wir verwenden deine Daten ausschließlich für den Bewerbungsprozess und die Kontaktaufnahme.</p>
+      <p class="k-secure"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>100 % sichere Datenverbindung</p>
+    </form>
+    <div class="k-next">
+      <h3>So geht's danach weiter</h3>
+      <ol>
+        <li><span>1</span><span>Wir melden uns innerhalb von <b>48 Stunden</b> bei dir für ein kurzes Kennenlerngespräch.</span></li>
+        <li><span>2</span><span>Passt es für beide Seiten, laden wir dich zum Vorstellungsgespräch ein.</span></li>
+      </ol>
+    </div>`);
+
   const ErfolgScreen = () => `
-    <div class="animate-fade-in">
-      <div class="relative">
-        <img src="${CONFIG.img.success}" alt="Das Team von Gartengestaltung Schwingel" class="h-64 w-full object-cover object-[center_25%] sm:h-72">
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/45 to-brand-deep/10"></div>
-        <div class="absolute inset-x-0 top-0 flex justify-end p-4">${Logo(true)}</div>
-        <div class="absolute inset-x-0 bottom-0 p-5">${DuKannstMehr('sm')}</div>
+    <div class="k-success">
+      <div class="k-success__media">
+        <img src="${CONFIG.img.success}" alt="Das Team von Gartengestaltung Schwingel" width="1080" height="1440">
+        ${Badge()}
       </div>
-      <div class="bg-brand-deep bg-grid px-5 pb-7 pt-6 text-center">
-        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent-limeLight"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="#43041b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <h1 class="mt-4 font-display text-[24px] uppercase leading-[1.08] text-white sm:text-[27px]">Deine Bewerbung<br>ist eingegangen!</h1>
-        <p class="mx-auto mt-3 max-w-[19rem] text-[14px] leading-relaxed text-white/80">Wir prüfen deine Angaben persönlich und melden uns in deinem angegebenen Zeitraum — innerhalb von <b class="font-extrabold text-white">48 Stunden</b>.</p>
+      <div class="k-success__body">
+        <span class="k-success__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <h1 tabindex="-1">Deine Bewerbung<br>ist eingegangen!</h1>
+        <p>Wir prüfen deine Angaben persönlich und melden uns in deinem angegebenen Zeitraum — innerhalb von <b>48 Stunden</b>.</p>
+        <a class="btn btn--lime k-success__home" href="../">Zur Startseite</a>
+        <div class="k-success__band">Wir freuen uns auf dich!</div>
       </div>
-      <div class="bg-accent-limeLight px-5 py-4 text-center"><span class="font-display text-[17px] uppercase tracking-[0.01em] text-brand-deep">Wir freuen uns auf dich!</span></div>
-      ${Footer()}
     </div>`;
 
   /* ======================= Versand (identische Nutzdaten) ======================= */
@@ -497,13 +383,14 @@ ${BEWERBERPROFIL}`;
   /* ======================= Zustand & Ablauf ======================= */
   const LEER = { bereich: '', antworten: [], name: '', email: '', phone: '', erreichbarkeit: '', datenschutz: false };
   const state = { screen: 'start', index: 0, data: { ...LEER }, vorschlaege: [] };
-  const card = document.createElement('div');
-  card.className = 'w-full max-w-md overflow-hidden rounded-[26px] bg-white shadow-card';
-  const shell = document.createElement('div');
-  shell.className = 'flex min-h-[100dvh] flex-col items-center justify-start bg-canvas px-3 py-4 sm:justify-center sm:py-10';
-  shell.appendChild(card);
-  const root = document.getElementById('root');
-  root.replaceChildren(shell);
+  const landing = document.querySelector('[data-landing]');
+  const funnel = document.querySelector('[data-funnel]');
+  const header = document.querySelector('[data-header]');
+
+  // Stellen-Buttons in Hero und „Offene Stellen“
+  document.querySelectorAll('[data-jobs]').forEach((el) => {
+    el.innerHTML = KUNDE.stellen.map((s) => JobButton(s.title)).join('');
+  });
 
   const fragen = () => findStelle(state.data.bereich)?.fragen ?? [];
   const total = () => fragen().length + 1;
@@ -532,15 +419,24 @@ ${BEWERBERPROFIL}`;
 
   const render = () => {
     const d = state.data;
-    if (state.screen === 'start') card.innerHTML = StartScreen();
-    else if (state.screen === 'frage') card.innerHTML = FrageScreen(fragen()[state.index], state.index, total());
-    else if (state.screen === 'hinweis') card.innerHTML = HinweisScreen(state.vorschlaege, state.index, total());
-    else if (state.screen === 'kontakt') { card.innerHTML = KontaktScreen(fragen().length, total(), d); bindForm(); }
-    else if (state.screen === 'success') card.innerHTML = ErfolgScreen();
+    const onLanding = state.screen === 'start';
+    landing.hidden = !onLanding;
+    funnel.hidden = onLanding;
+    if (onLanding) {
+      funnel.innerHTML = '';
+      document.getElementById('stellen').scrollIntoView({ block: 'start' });
+      return;
+    }
+    if (state.screen === 'frage') funnel.innerHTML = FrageScreen(fragen()[state.index], state.index, total());
+    else if (state.screen === 'hinweis') funnel.innerHTML = HinweisScreen(state.vorschlaege, state.index, total());
+    else if (state.screen === 'kontakt') { funnel.innerHTML = KontaktScreen(fragen().length, total(), d); bindForm(); }
+    else if (state.screen === 'success') funnel.innerHTML = ErfolgScreen();
+    window.scrollTo(0, 0);
+    funnel.querySelector('h1')?.focus({ preventScroll: true });
   };
 
   // Klicks zentral auswerten (Stellen, Antworten, Zurück)
-  card.addEventListener('click', (e) => {
+  document.addEventListener('click', (e) => {
     const stelle = e.target.closest('[data-stelle]');
     if (stelle) return waehleStelle(stelle.dataset.stelle);
 
@@ -568,8 +464,13 @@ ${BEWERBERPROFIL}`;
     }
   });
 
+  // „Jetzt bewerben“-Links im Header/Menü führen zurück zur Stellenwahl
+  document.querySelectorAll('a[href="#stellen"]').forEach((a) => a.addEventListener('click', () => {
+    if (state.screen !== 'start') { state.screen = 'start'; state.data = { ...LEER }; render(); }
+  }));
+
   const bindForm = () => {
-    const form = card.querySelector('[data-form]');
+    const form = funnel.querySelector('[data-form]');
     const name = form.querySelector('#bewerber-name');
     const tel = form.querySelector('#bewerber-tel');
     const mail = form.querySelector('#bewerber-email');
@@ -594,11 +495,7 @@ ${BEWERBERPROFIL}`;
     form.querySelectorAll('[data-erreichbar]').forEach((btn) => {
       btn.addEventListener('click', () => {
         d.erreichbarkeit = btn.dataset.erreichbar;
-        form.querySelectorAll('[data-erreichbar]').forEach((b) => {
-          const on = b === btn;
-          b.setAttribute('aria-pressed', String(on));
-          b.className = chipCls(on);
-        });
+        form.querySelectorAll('[data-erreichbar]').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
       });
     });
 
@@ -621,5 +518,4 @@ ${BEWERBERPROFIL}`;
 
   initPixel();
   track('seite_geoeffnet');
-  render();
 })();
