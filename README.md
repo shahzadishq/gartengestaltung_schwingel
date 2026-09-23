@@ -92,21 +92,20 @@ Instagram-Posts mit eingebranntem Text (Stellenanzeigen) sind bewusst nicht verw
 
 Alle Bildstellen sind im HTML mit `<!-- BILDPLATZ: … -->` markiert.
 
-| Datei | Verwendung | Hinweis |
+| Datei | Verwendung | Quelle / Größe |
 |---|---|---|
-| `hero-garten.jpg` | Hero | nur 750 px breit – **höher aufgelöstes Original gewünscht** (≥ 2000 px) |
-| `team-kollektiv.jpg` | Über uns | 2560 px, gut |
-| `team-lachen.jpg` | CTA | 1080 px, gut |
-| `insta-garten-schubkarre.jpg`, `insta-team-shirt.jpg` | Über uns (Zweitbild), Warum Schwingel | aus Instagram, nur 512 px – reicht für die kleinen Formate |
-| `person-*.jpg` | Ansprechpartner im CTA | Porträts der Altseite, 200 px |
-| `leistung-*.jpg` | Leistungen | 800 px von der Altseite – bessere Instagram-Fotos willkommen |
-| `leistung-baumfaellung.jpg`, `leistung-grab.jpg` | Baumfällarbeiten, Grabgestaltung | Banner der Altseite, nur 600×220 px – werden unbeschnitten auf unscharfem Hintergrund gezeigt. **Größere Fotos gewünscht** |
+| `hero-garten.jpg` | Hero | Instagram (Kunde), 1080 × 1440 px |
+| `team-kollektiv.jpg` | Über uns | Altseite, 2560 px |
+| `team-bagger.jpg` | Über uns (Zweitbild) | Instagram (Kunde), 1080 px |
+| `team-lachen.jpg` | CTA | Karriere-Funnel, 1080 px |
+| `firmen-lkw.jpg` | Warum Schwingel | Instagram (Kunde), 1023 px |
+| `person-*.jpg` | Ansprechpartner im CTA | Altseite, 200 px |
+| `leistung-planung.jpg` | Planung & Visualisierung | Altseite, 800 px (Skizze – noch kein besseres Motiv) |
+| `leistung-pflasterungen/-bepflanzungen/-teich/-einfriedung/-baumschnitt/-baumfaellung/-grab.jpg` | Leistungen | Instagram (Kunde), 1080 px |
 
 ## Offene Punkte vor dem Livegang
 
 - [ ] Mitarbeiterzahl „25“ bestätigen (Stand der Altseite)
-- [ ] Hero-Foto in höherer Auflösung liefern
-- [ ] Größere Fotos für Baumfällarbeiten und Friedhofs- & Grabgestaltung liefern (aktuell 600×220 px von der Altseite)
 - [ ] Text für Baumfällarbeiten freigeben: Die Altseite ist dort „im Aufbau“, der Text bleibt deshalb bewusst knapp
 - [ ] Impressum/Datenschutz verlinken aktuell auf die bestehenden Seiten, beim Relaunch umstellen
 - [ ] Optional: Kontaktformular statt `mailto:`-Link (benötigt Backend oder Formular-Dienst)

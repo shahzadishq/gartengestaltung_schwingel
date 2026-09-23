@@ -9,23 +9,22 @@ const OUT = 'assets/img';
 
 // name → gewünschte Breiten (werden nie über die Originalbreite hinaus skaliert)
 const IMAGES = {
-  'hero-garten': [480, 750, 1200],
+  'hero-garten': [480, 750, 1080],
   'team-kollektiv': [640, 1024, 1600],
-  'insta-garten-schubkarre': [512],
-  'insta-team-shirt': [512],
+  'team-lachen': [480, 720, 1080],
+  'team-bagger': [480, 720],
+  'firmen-lkw': [480, 720],
+  'leistung-planung': [480, 800],
+  'leistung-pflasterungen': [480, 800, 1080],
+  'leistung-bepflanzungen': [480, 800, 1080],
+  'leistung-teich': [480, 800, 1080],
+  'leistung-einfriedung': [480, 800, 1080],
+  'leistung-baumschnitt': [480, 800, 1080],
+  'leistung-baumfaellung': [480, 800, 1080],
+  'leistung-grab': [480, 800, 1080],
   'person-lohmann': [200],
   'person-c-schwingel': [200],
   'person-bonkamp': [200],
-  'team-lachen': [480, 720, 1080],
-  'leistung-planung': [480, 800],
-  'leistung-pflasterungen': [480, 800],
-  'leistung-bepflanzungen': [480, 800],
-  'leistung-teich': [480, 800],
-  'leistung-einfriedung': [480, 800],
-  'leistung-baumschnitt': [480, 800],
-  // Altseite hat hierfür nur 600×220-Banner → werden unbeschnitten gezeigt
-  'leistung-baumfaellung': [600],
-  'leistung-grab': [600],
 };
 
 await mkdir(OUT, { recursive: true });
