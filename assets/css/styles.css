@@ -347,8 +347,8 @@ address { font-style: normal; }
   .menu-toggle { display: none; }
   .header-phone { padding-inline: 8px; }
 }
-@media (min-width: 1200px) {
-  .header-phone span { display: inline; }
+@media (min-width: 1360px) {
+  .header-phone span { display: inline; white-space: nowrap; }
 }
 
 /* ---------- Mobile-Menü ---------- */
@@ -1093,4 +1093,12 @@ body.menu-open { overflow: hidden; }
   .stage-img--wide picture { position: relative; width: min(100%, 600px); box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.6); }
   .stage-img--wide picture img { width: 100%; height: auto; aspect-ratio: 600 / 220; object-fit: cover; transform: none; }
   .stage-img--wide.is-active .stage-img__blur { transform: scale(1.25); }
+}
+
+/* Navigation mit 5 Punkten: nie umbrechen, bis 1279 px etwas kompakter */
+.main-nav a { white-space: nowrap; }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .main-nav ul { gap: 18px; }
+  .main-nav a { font-size: 0.75rem; letter-spacing: 0.1em; }
+  .site-header__inner { gap: 18px; }
 }

@@ -95,7 +95,7 @@
   }
 
   /* ---------- Aktiver Navigationspunkt ---------- */
-  const navLinks = [...document.querySelectorAll('.main-nav a')];
+  const navLinks = [...document.querySelectorAll('.main-nav a[href^="#"]')];
   const sections = navLinks.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   if ('IntersectionObserver' in window) {
     const navIo = new IntersectionObserver((entries) => {
