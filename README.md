@@ -23,7 +23,8 @@ Deployment: Den Ordner unverändert auf Vercel, Netlify oder einen beliebigen We
 | 6 · Footer | – | Kontakt, Navigation, Leistungen, Impressum/Datenschutz |
 
 ```
-index.html
+index.html                Startseite
+karriere/                 Karriere-Funnel (1:1-Nachbau von schwingel-karriere.vercel.app)
 assets/css/styles.css     Design-Tokens, Layout, Motion
 assets/js/main.js         Menü, Scroll-Reveal, Leistungs-Bühne/Akkordeon, Parallaxe
 assets/fonts/             Archivo + Archivo Black (selbst gehostet → keine Google-Anfrage, DSGVO)
@@ -31,6 +32,22 @@ assets/img/               optimierte WebP/JPEG-Varianten (generiert)
 images-src/               Originalbilder (Quelle für npm run images)
 scripts/optimize-images.mjs
 ```
+
+## Karriere-Seite (`/karriere/`)
+
+1:1-Nachbau des bestehenden Bewerbungs-Funnels schwingel-karriere.vercel.app. Er ist ohne React
+und ohne Build-Schritt umgesetzt, damit er auf GitHub Pages läuft.
+
+- **Identisch:** alle Texte, 3 Stellen, je 4 Fragen, „Danke für deine Ehrlichkeit!“-Weiterleitung,
+  Kontaktformular (Name, Handy, E-Mail optional, Erreichbarkeit, Datenschutz), Validierung,
+  3 Sendeversuche, Fehlermeldung, Erfolgsseite. Das Stylesheet ist der Original-Tailwind-Build
+  (`karriere/karriere.css`), nur die Schriften sind selbst gehostet. Pixelvergleich mit dem Original
+  bei 390 und 1440 px: 0 abweichende Pixel auf allen Screens.
+- **Bewerbungen** gehen mit exakt denselben Feldern an denselben Make-Webhook wie das Original.
+- **Bewusst abweichend:** Meta Pixel und Funnel-Tracking (greenhub) sind standardmäßig **aus**
+  (`tracking: false` in `karriere/karriere.js`). Sie laufen ohne Cookie-Einwilligung und würden
+  sonst die Statistik der Live-Seite verfälschen. Einschalten, wenn diese Seite die Live-Seite ersetzt.
+  „Zur Webseite“ im Footer führt auf die neue Startseite statt auf die Altseite.
 
 ## Corporate Identity
 
