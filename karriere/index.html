@@ -1,25 +1,222 @@
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#840636" />
-    <meta name="description" content="Karriere bei Gartengestaltung Schwingel — Jetzt direkt online bewerben und Teil unseres Teams werden." />
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-    <title>Karriere bei Gartengestaltung Schwingel</title>
-    <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="stylesheet" href="karriere.css" />
-    <script src="karriere.js" defer></script>
-  </head>
-  <body>
-    <div id="root">
-      <noscript>
-        <p style="padding:24px;font-family:Archivo,system-ui,sans-serif">
-          Bitte aktiviere JavaScript, um dich online zu bewerben – oder ruf uns an:
-          <a href="tel:+4925289297770">02528 929 77 70</a>.
-        </p>
-      </noscript>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Karriere bei Gartengestaltung Schwingel</title>
+  <meta name="description" content="Karriere bei Gartengestaltung Schwingel — Jetzt direkt online bewerben und Teil unseres Teams werden.">
+  <meta name="theme-color" content="#840636">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Wir suchen Verstärkung – Gartengestaltung Schwingel">
+  <meta property="og:description" content="Bauleiter, Vorarbeiter und Landschaftsgärtner (m/w/d) in Ennigerloh. Jetzt in 2 Minuten bewerben.">
+  <meta property="og:image" content="../assets/img/team-lachen-1080.jpg">
+
+  <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="../assets/img/team-lachen-1080.webp"
+        imagesrcset="../assets/img/team-lachen-480.webp 480w, ../assets/img/team-lachen-720.webp 720w, ../assets/img/team-lachen-1080.webp 1080w"
+        imagesizes="(min-width: 1024px) 50vw, 100vw">
+
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="karriere.css">
+  <script src="../assets/js/main.js" defer></script>
+  <script src="karriere.js" defer></script>
+</head>
+<body class="page-karriere">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- ============================== HEADER (wie Startseite) ============================== -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="brand" href="../" aria-label="Gartengestaltung Schwingel – zur Startseite">
+        <img src="../assets/img/logo.png" width="199" height="89" alt="Gartengestaltung Schwingel">
+      </a>
+
+      <nav class="main-nav" aria-label="Hauptnavigation">
+        <ul>
+          <li><a href="../#ueber-uns">Über uns</a></li>
+          <li><a href="../#leistungen">Leistungen</a></li>
+          <li><a href="../#vorteile">Warum Schwingel</a></li>
+          <li><a href="../#kontakt">Kontakt</a></li>
+          <li><a href="./" class="is-current" aria-current="page">Karriere</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="header-phone" href="tel:+4925289297770">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
+          <span>02528 929 77 70</span>
+        </a>
+        <a class="btn btn--primary btn--sm" href="#stellen">Jetzt bewerben</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+          <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span></span>
+          <span class="sr-only" data-menu-label>Menü öffnen</span>
+        </button>
+      </div>
     </div>
-  </body>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" data-menu hidden>
+    <nav aria-label="Mobile Navigation">
+      <ol class="mobile-menu__list">
+        <li><a href="../#ueber-uns"><span>01</span>Über uns</a></li>
+        <li><a href="../#leistungen"><span>02</span>Leistungen</a></li>
+        <li><a href="../#vorteile"><span>03</span>Warum Schwingel</a></li>
+        <li><a href="../#kontakt"><span>04</span>Kontakt</a></li>
+        <li><a href="./" aria-current="page"><span>05</span>Karriere</a></li>
+      </ol>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a class="btn btn--lime btn--block" href="#stellen">Jetzt bewerben</a>
+      <a class="mobile-menu__phone" href="tel:+4925289297770">02528 929 77 70</a>
+      <a class="mobile-menu__mail" href="mailto:info@schwingel-gartengestaltung.de">info@schwingel-gartengestaltung.de</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- ============================== LANDING ============================== -->
+    <div data-landing>
+
+      <!-- HERO: Wir suchen Verstärkung + Stellenwahl -->
+      <section class="k-hero" aria-labelledby="k-hero-title">
+        <div class="k-hero__media">
+          <picture>
+            <source type="image/webp" srcset="../assets/img/team-lachen-480.webp 480w, ../assets/img/team-lachen-720.webp 720w, ../assets/img/team-lachen-1080.webp 1080w" sizes="(min-width: 1024px) 50vw, 100vw">
+            <img src="../assets/img/team-lachen-1080.jpg" width="1080" height="1440" fetchpriority="high"
+                 alt="Das Team von Gartengestaltung Schwingel bei der Arbeit">
+          </picture>
+          <span class="k-pin">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.686 7-11a7 7 0 10-14 0c0 5.314 7 11 7 11z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2.2"/></svg>
+            Ennigerloh
+          </span>
+        </div>
+
+        <div class="k-hero__content">
+          <p class="kicker">Karriere bei Schwingel</p>
+          <h1 class="k-hero__title" id="k-hero-title">
+            <span class="k-hero__line">Wir suchen</span>
+            <span class="tilt-box tilt-box--k">
+              <span class="tilt-box__frame" aria-hidden="true"></span>
+              <span class="tilt-box__body">Verstärkung<span class="dot">.</span></span>
+            </span>
+          </h1>
+          <ul class="k-chips" aria-label="Deine Bewerbung">
+            <li>100 % diskret</li>
+            <li>Unverbindlich</li>
+            <li>In 2 Minuten</li>
+          </ul>
+
+          <h2 class="k-hero__ask" id="stellen">Welche Stelle interessiert dich?</h2>
+          <div class="k-jobs" data-jobs></div>
+        </div>
+      </section>
+
+      <!-- DU KANNST MEHR -->
+      <section class="k-claim" aria-label="Du kannst mehr">
+        <picture class="k-claim__bg">
+          <source type="image/webp" srcset="../assets/img/hero-garten-750.webp">
+          <img src="../assets/img/hero-garten-750.jpg" width="750" height="1000" alt="" loading="lazy" decoding="async">
+        </picture>
+        <div class="k-badge k-badge--lg" data-reveal>
+          <span class="k-badge__frame" aria-hidden="true"></span>
+          <span class="k-badge__main">Du<br>kannst<br>mehr<span class="dot">.</span></span>
+          <span class="k-badge__sub">Dein Job sollte das<br>auch können<span class="dot">.</span></span>
+          <span class="k-badge__line" aria-hidden="true"></span>
+        </div>
+      </section>
+
+      <!-- VORTEILE -->
+      <section class="k-benefits section" aria-labelledby="k-benefits-title">
+        <div class="container">
+          <p class="kicker kicker--lime" data-reveal>Deine Vorteile</p>
+          <h2 class="h2 h2--light" id="k-benefits-title" data-reveal>Was dir Schwingel bietet<span class="dot">.</span></h2>
+          <ul class="k-benefit-grid">
+            <li data-reveal><span class="k-benefit__icon" aria-hidden="true">💶</span><span>Überdurchschnittliches Gehalt + Sonderzahlungen</span></li>
+            <li data-reveal><span class="k-benefit__icon" aria-hidden="true">🌴</span><span>30 Tage Urlaub + Sonderurlaub</span></li>
+            <li data-reveal><span class="k-benefit__icon" aria-hidden="true">🎉</span><span>Regelmäßige Teamevents &amp; echter Zusammenhalt</span></li>
+            <li data-reveal><span class="k-benefit__icon" aria-hidden="true">🤝</span><span>Wertschätzung ab Tag 1</span></li>
+            <li data-reveal><span class="k-benefit__icon" aria-hidden="true">🚀</span><span>Entwicklung &amp; Aufstiegschancen</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- WIR VERGRÖSSERN UNSER TEAM -->
+      <section class="k-team section" aria-labelledby="k-team-title">
+        <div class="container">
+          <header class="section-head">
+            <div>
+              <p class="kicker" data-reveal>Offene Stellen</p>
+              <h2 class="h2" id="k-team-title" data-reveal>Wir vergrößern unser Team<span class="dot">.</span></h2>
+            </div>
+            <p class="section-head__intro" data-reveal>Verstärke uns — wähl die Stelle, die zu dir passt.</p>
+          </header>
+          <div class="k-jobs k-jobs--cards" data-jobs data-reveal></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================== BEWERBUNG (wird per JS gefüllt) ============================== -->
+    <section class="funnel" data-funnel hidden aria-live="polite"></section>
+
+    <noscript>
+      <p class="container" style="padding-block:24px">Bitte aktiviere JavaScript, um dich online zu bewerben – oder ruf uns an: <a href="tel:+4925289297770">02528 929 77 70</a>.</p>
+    </noscript>
+  </main>
+
+  <!-- ============================== FOOTER (wie Startseite) ============================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="brand brand--footer" href="../" aria-label="Gartengestaltung Schwingel – zur Startseite">
+            <img src="../assets/img/logo.png" width="199" height="89" alt="Gartengestaltung Schwingel" loading="lazy">
+          </a>
+          <p class="footer__claim">Garten- &amp; Landschaftsbau aus Enniger – seit 1991.</p>
+        </div>
+
+        <nav class="footer__col" aria-label="Footer-Navigation">
+          <h2 class="footer__h">Navigation</h2>
+          <ul>
+            <li><a href="../#ueber-uns">Über uns</a></li>
+            <li><a href="../#leistungen">Leistungen</a></li>
+            <li><a href="../#vorteile">Warum Schwingel</a></li>
+            <li><a href="../#kontakt">Kontakt</a></li>
+            <li><a href="./">Karriere</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer__col">
+          <h2 class="footer__h">Offene Stellen</h2>
+          <ul class="footer__services">
+            <li>Bauleiter im Garten- und Landschaftsbau (m/w/d)</li>
+            <li>Vorarbeiter im Garten- und Landschaftsbau (m/w/d)</li>
+            <li>Landschaftsgärtner (m/w/d)</li>
+          </ul>
+        </div>
+
+        <address class="footer__col footer__contact">
+          <h2 class="footer__h">Kontakt</h2>
+          <p>Gartengestaltung Schwingel<br>GmbH &amp; Co. KG<br>Hauptstraße 99<br>59320 Ennigerloh-Enniger</p>
+          <p>
+            <a href="tel:+4925289297770">Tel. +49 2528 929 77 70</a><br>
+            <a href="mailto:info@schwingel-gartengestaltung.de">info@schwingel-gartengestaltung.de</a>
+          </p>
+        </address>
+      </div>
+
+      <div class="footer__bottom">
+        <p>© 2026 Gartengestaltung Schwingel GmbH &amp; Co. KG</p>
+        <ul class="footer__legal">
+          <li><a href="https://www.schwingel-gartengestaltung.de/impressum/">Impressum</a></li>
+          <li><a href="https://www.schwingel-gartengestaltung.de/datenschutzerklaerung/">Datenschutz</a></li>
+          <li><a href="https://www.instagram.com/gartengestaltung_schwingel/" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
 </html>
