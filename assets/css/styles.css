@@ -1071,7 +1071,7 @@ body.menu-open { overflow: hidden; }
   border: 6px solid var(--white);
   box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.6);
 }
-.benefits__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.benefits__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
 @media (min-width: 1280px) { .benefits__img { width: min(100%, 400px); aspect-ratio: 4 / 3; margin-top: 40px; } }
 
 .contacts { display: grid; gap: 14px; margin-top: 14px; }
@@ -1081,19 +1081,6 @@ body.menu-open { overflow: hidden; }
 .contacts small { font-size: 0.8125rem; font-weight: 400; color: var(--ink-muted); }
 @media (min-width: 768px) { .contacts { grid-template-columns: repeat(3, auto); justify-content: start; gap: 24px 32px; } }
 
-/* ---------- Breite Banner (Baumfällarbeiten, Grabgestaltung) ----------
-   Die Altseite liefert nur 600×220 px – unbeschnitten zeigen statt unscharf croppen. */
-.service__img--wide { aspect-ratio: 600 / 220; }
-@media (min-width: 1024px) {
-  .stage-img--wide { display: grid; place-items: center; background: var(--wine-deep); overflow: hidden; }
-  .stage-img--wide .stage-img__blur {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; filter: blur(28px) saturate(1.1) brightness(0.55); transform: scale(1.25);
-  }
-  .stage-img--wide picture { position: relative; width: min(100%, 600px); box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.6); }
-  .stage-img--wide picture img { width: 100%; height: auto; aspect-ratio: 600 / 220; object-fit: cover; transform: none; }
-  .stage-img--wide.is-active .stage-img__blur { transform: scale(1.25); }
-}
 
 /* Navigation mit 5 Punkten: nie umbrechen, bis 1279 px etwas kompakter */
 .main-nav a { white-space: nowrap; }
